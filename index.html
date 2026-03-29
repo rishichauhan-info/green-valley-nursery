@@ -32,17 +32,14 @@
         .navbar { position: relative; }
         
         @media (max-width: 991px) {
-            /* Hamburger Button ko visible banana */
             .navbar-toggler {
-                background-color: #6bb120 !important; /* Green color taaki dikhe */
+                background-color: #6bb120 !important;
                 border: 2px solid #fff;
-                padding: 8px 12px;
+                padding: 5px 10px;
                 border-radius: 5px;
+                outline: none !important;
+                box-shadow: none !important;
             }
-            .navbar-toggler-icon {
-                filter: brightness(0) invert(1); /* Icon ko white karna */
-            }
-            /* Dropdown Menu ko theek se dikhana */
             #navbarSupportedContent {
                 background-color: #ffffff;
                 padding: 15px;
@@ -70,17 +67,33 @@
         }
 
         /* =========================================
-           FIX 2: COUNTER BACKGROUND FALLBACK 
+           FIX 2: CAROUSEL IMAGE HEIGHT ON MOBILE
+           ========================================= */
+        @media (max-width: 768px) {
+            /* Mobile screen par image ki extra white space hatane ke liye */
+            .carousel-item {
+                height: 45vh !important; /* Screen ka 45% hissa cover karegi */
+                min-height: 250px !important;
+            }
+        }
+
+        /* =========================================
+           FIX 3: COUNTER BACKGROUND & VISIBILITY
            ========================================= */
         .paralaxbg {
-            background-color: #2e3238 !important; /* Dark fallback agar image fail ho jaye */
+            background-color: #2e3238 !important;
             background-size: cover;
             background-position: center;
         }
         .paralaxbg .overlay {
-            background-color: rgba(0, 0, 0, 0.6); /* Text ko readable banane ke liye dark shadow */
-            padding: 60px 0; /* Box ko height dena */
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 60px 0;
             width: 100%;
+        }
+        .counter {
+            opacity: 1 !important;
+            visibility: visible !important;
+            display: block !important;
         }
     </style>
 </head>
@@ -113,7 +126,7 @@
             <div class="container">
                 <a class="navbar-brand" href="index.html"><img src="Logo.png" alt="logo" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-                    <span class="navbar-toggler-icon"></span>
+                    <i class="fa fa-bars" style="color: #fff; font-size: 26px;"></i>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav pull-right">
@@ -239,10 +252,10 @@
             <div class="overlay">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3 text-center"><div><i class="fa fa-smile-o" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="179" style="display:block; font-size:36px; color:#fff; font-weight:bold;">179</span><p style="color:#fff;">Customer Satisfaction</p></div></div>
-                        <div class="col-md-3 text-center"><div><i class="fa fa-trophy" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="141" style="display:block; font-size:36px; color:#fff; font-weight:bold;">141</span><p style="color:#fff;">Achieve Goals</p></div></div>
-                        <div class="col-md-3 text-center"><div><i class="fa fa-share-alt" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="141" style="display:block; font-size:36px; color:#fff; font-weight:bold;">141</span><p style="color:#fff;">Share People</p></div></div>
-                        <div class="col-md-3 text-center"><div><i class="fa fa-headphones" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="47" style="display:block; font-size:36px; color:#fff; font-weight:bold;">47</span><p style="color:#fff;">Dedicated Support</p></div></div>
+                        <div class="col-md-3 text-center"><div><i class="fa fa-smile-o" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="179" style="font-size:36px; color:#fff; font-weight:bold;">0</span><p style="color:#fff;">Customer Satisfaction</p></div></div>
+                        <div class="col-md-3 text-center"><div><i class="fa fa-trophy" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="141" style="font-size:36px; color:#fff; font-weight:bold;">0</span><p style="color:#fff;">Achieve Goals</p></div></div>
+                        <div class="col-md-3 text-center"><div><i class="fa fa-share-alt" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="141" style="font-size:36px; color:#fff; font-weight:bold;">0</span><p style="color:#fff;">Share People</p></div></div>
+                        <div class="col-md-3 text-center"><div><i class="fa fa-headphones" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="47" style="font-size:36px; color:#fff; font-weight:bold;">0</span><p style="color:#fff;">Dedicated Support</p></div></div>
                     </div>
                 </div>
             </div>
@@ -391,40 +404,38 @@
         }
         
         // ==========================================
-        // PURE NATIVE JAVASCRIPT COUNTER (BULLETPROOF)
+        // COUNTER FIX (Foolproof jQ Method)
         // ==========================================
-        const counters = document.querySelectorAll('.counter');
-        const speed = 100; // Speed of counting
+        var counted = false;
+        var counterSection = document.querySelector('.paralaxbg');
 
-        const animateCounter = (counter) => {
-            const target = +counter.getAttribute('data-target');
-            const updateCount = () => {
-                const current = +counter.innerText;
-                const increment = target / speed;
-
-                if (current < target) {
-                    counter.innerText = Math.ceil(current + increment);
-                    setTimeout(updateCount, 20); // Delay between frames
-                } else {
-                    counter.innerText = target;
+        if (counterSection) {
+            var observer = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting && !counted) {
+                    counted = true; 
+                    
+                    $('.counter').each(function() {
+                        var $this = $(this);
+                        var countTo = parseInt($this.attr('data-target'), 10);
+                        
+                        $({ countNum: 0 }).animate({
+                            countNum: countTo
+                        }, {
+                            duration: 2500,
+                            easing: 'swing',
+                            step: function() {
+                                $this.text(Math.floor(this.countNum));
+                            },
+                            complete: function() {
+                                $this.text(this.countNum);
+                            }
+                        });
+                    });
                 }
-            };
-            counter.innerText = '0';
-            updateCount();
-        };
+            }, { threshold: 0.1 });
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateCounter(entry.target);
-                    observer.unobserve(entry.target); // Ek baar chalne ke baad ruk jayega
-                }
-            });
-        }, { threshold: 0.5 }); // Jab aada section dikhega tab chalu hoga
-
-        counters.forEach(counter => {
-            observer.observe(counter);
-        });
+            observer.observe(counterSection);
+        }
         
         // ==========================================
         // OWL CAROUSEL FIX

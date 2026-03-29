@@ -22,104 +22,58 @@
         #wrap { margin: 0px auto; padding: 15px; width: 100%; background: #FFFFFF; border: 1px solid #0099FF; }
         h1, h2 { font-weight: normal; border-bottom: 1px solid #E0E0E0; }
         .grey { color: #999999; }
-        
         .form-control::placeholder { color: #ffffff !important; opacity: 1; }
 
-        /* =========================================
-           FIX 1: PREMIUM PROFESSIONAL MOBILE MENU
-           ========================================= */
-        .navbar { position: relative; }
-        
+        /* COMMON MOBILE MENU FIX */
         @media (max-width: 991px) {
-            /* 1. Menu Button Styling (Clean & Minimal) */
             .navbar-toggler {
-                border: none !important;
-                background: transparent !important;
-                padding: 5px 10px;
+                display: block !important;
+                background: #6bb120 !important;
+                border: 2px solid #ffffff !important;
+                padding: 2px 10px !important;
+                border-radius: 5px !important;
                 outline: none !important;
-                box-shadow: none !important;
+                margin: 10px 0;
             }
-            .navbar-toggler i.fa-bars {
-                color: #6bb120 !important; /* Theme green color */
-                font-size: 28px;
+            .navbar-toggler::before {
+                content: "\2630" !important;
+                color: #ffffff !important;
+                font-size: 24px !important;
+                font-weight: bold !important;
             }
-            
-            /* 2. Dropdown Container Styling (Premium Look) */
+            .navbar-toggler-icon, .navbar-toggler i, .navbar-toggler span { display: none !important; }
             #navbarSupportedContent {
-                background-color: #ffffff;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
-                border-top: 3px solid #6bb120; /* Ek green border top pe */
-                z-index: 9999;
-                padding: 0;
-                margin-top: 10px;
-            }
-            
-            /* 3. Links Styling */
-            .navbar-nav {
-                width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            .navbar-nav .nav-item {
-                border-bottom: 1px solid #f0f0f0;
-            }
-            .navbar-nav .nav-item:last-child {
-                border-bottom: none;
+                background-color: #ffffff !important;
+                position: absolute !important;
+                top: 100% !important;
+                left: 0 !important;
+                width: 100% !important;
+                box-shadow: 0px 10px 25px rgba(0,0,0,0.2) !important;
+                border-top: 4px solid #6bb120 !important;
+                z-index: 10000 !important;
             }
             .navbar-nav .nav-link {
-                padding: 14px 20px !important;
-                font-size: 15px !important; 
-                font-weight: 600;
+                padding: 15px 25px !important;
+                font-size: 16px !important;
+                font-weight: bold !important;
                 color: #333 !important;
-                text-align: left; /* Text ko left me rakhna professional hota hai */
-            }
-            .navbar-nav .nav-link:hover, .navbar-nav .active > .nav-link {
-                background-color: #f9f9f9;
-                color: #6bb120 !important;
-            }
-
-            /* 4. Inner Dropdown (Sub-menu) Styling */
-            .navbar-nav .dropdown-menu {
-                position: static !important;
-                float: none;
-                width: 100%;
-                background-color: #fdfdfd;
-                border: none;
-                box-shadow: none;
-                padding: 0;
-                margin: 0;
-            }
-            .navbar-nav .dropdown-item {
-                padding: 10px 20px 10px 40px !important; /* Thoda andar ki taraf space */
-                font-size: 14px;
-                color: #555;
-                border-bottom: 1px solid #f5f5f5;
-            }
-            .navbar-nav .dropdown-item:hover {
-                background-color: #f1f1f1;
-                color: #6bb120;
+                text-align: left !important;
             }
         }
 
-        /* =========================================
-           FIX 2: CAROUSEL IMAGE HEIGHT ON MOBILE
-           ========================================= */
+        /* Home Page Hero Image Fix (Taki zoom na ho) */
         @media (max-width: 768px) {
             .carousel-item {
-                height: 220px !important; 
-                min-height: 220px !important;
+                height: 250px !important;
+                min-height: 250px !important;
+                background-size: contain !important;
+                background-repeat: no-repeat !important;
+                background-color: #f4f4f4 !important;
                 background-position: center center !important;
-                background-size: cover !important;
             }
         }
 
-        /* =========================================
-           FIX 3: COUNTER BACKGROUND & VISIBILITY
-           ========================================= */
+        /* COUNTER BACKGROUND & VISIBILITY FIX */
         .paralaxbg {
             background-color: #2e3238 !important;
             background-size: cover;
@@ -166,9 +120,7 @@
             <div class="container">
                 <a class="navbar-brand" href="index.html"><img src="Logo.png" alt="logo" /></a>
                 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-                    <i class="fa fa-bars"></i>
-                </button>
+                <button class="navbar-toggler" type="button"></button>
                 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav pull-right">
@@ -444,6 +396,11 @@
         if ($.fn.easyTicker) {
             $('.vticker').easyTicker();
         }
+
+        // MOBILE TOGGLE FIX
+        $('.navbar-toggler').on('click', function() {
+            $('#navbarSupportedContent').toggleClass('show');
+        });
         
         // ==========================================
         // COUNTER FIX
@@ -499,7 +456,7 @@
         }
         
         // ==========================================
-        // FORM SUBMIT SCRIPT
+        // SENDER FORM SUBMIT SCRIPT
         // ==========================================
         $('#getInTouch').on('submit', function(e) {
             e.preventDefault();
@@ -515,24 +472,6 @@
             }
             return false; 
         });
-
-        function getParam(paramName) {
-            var urlSearch = window.location.search.substring(1);
-            var urlVariables = urlSearch.split('&');
-            for (var i = 0; i < urlVariables.length; i++) {
-                var paramArr = urlVariables[i].split('=');
-                if (paramArr[0] === paramName) {
-                    return decodeURIComponent(paramArr[1].replace(/\+/g, '%20'));
-                }
-            }
-            return null;
-        }
-
-        var urlName = getParam('passName');
-        var urlEmail = getParam('passEmail');
-
-        if (urlName) $('input[name="Full_Name"]').val(urlName);
-        if (urlEmail) $('input[name="Email_Address"]').val(urlEmail);
     });
     </script>
 </body>

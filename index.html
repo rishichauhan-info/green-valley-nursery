@@ -26,56 +26,90 @@
         .form-control::placeholder { color: #ffffff !important; opacity: 1; }
 
         /* =========================================
-           FIX 1: DESKTOP-STYLE MENU ON MOBILE (NO HAMBURGER)
+           FIX 1: PREMIUM PROFESSIONAL MOBILE MENU
            ========================================= */
         .navbar { position: relative; }
         
         @media (max-width: 991px) {
-            .navbar-toggler { display: none !important; }
-            
-            .collapse.navbar-collapse {
-                display: flex !important;
-                flex-basis: 100%;
-                justify-content: center;
-                margin-top: 10px; 
+            /* 1. Menu Button Styling (Clean & Minimal) */
+            .navbar-toggler {
+                border: none !important;
+                background: transparent !important;
+                padding: 5px 10px;
+                outline: none !important;
+                box-shadow: none !important;
+            }
+            .navbar-toggler i.fa-bars {
+                color: #6bb120 !important; /* Theme green color */
+                font-size: 28px;
             }
             
-            .navbar-nav {
-                flex-direction: row !important;
-                flex-wrap: wrap !important; 
-                justify-content: center;
+            /* 2. Dropdown Container Styling (Premium Look) */
+            #navbarSupportedContent {
+                background-color: #ffffff;
+                position: absolute;
+                top: 100%;
+                left: 0;
                 width: 100%;
+                box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+                border-top: 3px solid #6bb120; /* Ek green border top pe */
+                z-index: 9999;
+                padding: 0;
+                margin-top: 10px;
             }
             
+            /* 3. Links Styling */
+            .navbar-nav {
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
             .navbar-nav .nav-item {
-                border-bottom: none !important;
+                border-bottom: 1px solid #f0f0f0;
+            }
+            .navbar-nav .nav-item:last-child {
+                border-bottom: none;
             }
             .navbar-nav .nav-link {
-                padding: 8px 10px !important;
-                font-size: 13px !important; 
-                font-weight: 500;
+                padding: 14px 20px !important;
+                font-size: 15px !important; 
+                font-weight: 600;
                 color: #333 !important;
-                white-space: nowrap;
+                text-align: left; /* Text ko left me rakhna professional hota hai */
+            }
+            .navbar-nav .nav-link:hover, .navbar-nav .active > .nav-link {
+                background-color: #f9f9f9;
+                color: #6bb120 !important;
             }
 
+            /* 4. Inner Dropdown (Sub-menu) Styling */
             .navbar-nav .dropdown-menu {
-                position: absolute !important;
-                top: 100%;
-                left: auto;
-                background-color: #fff;
-                border: 1px solid #eee;
-                box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-                min-width: 180px;
-                z-index: 9999;
+                position: static !important;
+                float: none;
+                width: 100%;
+                background-color: #fdfdfd;
+                border: none;
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+            }
+            .navbar-nav .dropdown-item {
+                padding: 10px 20px 10px 40px !important; /* Thoda andar ki taraf space */
+                font-size: 14px;
+                color: #555;
+                border-bottom: 1px solid #f5f5f5;
+            }
+            .navbar-nav .dropdown-item:hover {
+                background-color: #f1f1f1;
+                color: #6bb120;
             }
         }
 
         /* =========================================
-           FIX 2: CAROUSEL IMAGE HEIGHT ON MOBILE (UPDATED)
+           FIX 2: CAROUSEL IMAGE HEIGHT ON MOBILE
            ========================================= */
         @media (max-width: 768px) {
             .carousel-item {
-                /* Height kam kar di gayi hai taaki image zoom hokar kate nahi aur "About Us" page jaisi wide dikhe */
                 height: 220px !important; 
                 min-height: 220px !important;
                 background-position: center center !important;
@@ -133,7 +167,7 @@
                 <a class="navbar-brand" href="index.html"><img src="Logo.png" alt="logo" /></a>
                 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
-                    <i class="fa fa-bars" style="color: #fff; font-size: 26px;"></i>
+                    <i class="fa fa-bars"></i>
                 </button>
                 
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">

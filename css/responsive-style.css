@@ -607,3 +607,26 @@
         white-space: normal !important;
     }
 }
+// ========================================================
+// UNIVERSAL MOBILE MENU FORCER (BYPASSES ALL CSS CACHE)
+// ========================================================
+$(document).ready(function() {
+    if ($(window).width() <= 991) {
+        // Purane button ko hata kar naya chamakta Green 3-line button lagana
+        $('.navbar-toggler').html('<i class="fa fa-bars"></i>');
+        $('.navbar-toggler').attr('style', 'display: block !important; background: transparent !important; border: none !important; padding: 5px 15px !important; outline: none !important; box-shadow: none !important; cursor: pointer;');
+        $('.navbar-toggler i').attr('style', 'color: #6bb120 !important; font-size: 30px !important;');
+        
+        // Dropdown menu ko sundar white box banana
+        $('#navbarSupportedContent').attr('style', 'background-color: #ffffff !important; position: absolute !important; top: 100% !important; left: 0 !important; width: 100% !important; box-shadow: 0px 10px 20px rgba(0,0,0,0.1) !important; border-top: 3px solid #6bb120 !important; z-index: 9999 !important; padding: 0 !important; margin-top: 10px !important;');
+        
+        // Links ko left-align aur premium banana
+        $('.navbar-nav').attr('style', 'width: 100% !important; margin: 0 !important; padding: 0 !important;');
+        $('.navbar-nav .nav-item').attr('style', 'border-bottom: 1px solid #f0f0f0 !important; width: 100%;');
+        $('.navbar-nav .nav-link').attr('style', 'padding: 15px 20px !important; font-size: 16px !important; font-weight: 600 !important; color: #333 !important; text-align: left !important; display: block !important;');
+        
+        // Sub-menu (About Us ke andar wale) ko theek karna
+        $('.navbar-nav .dropdown-menu').attr('style', 'background-color: #fdfdfd !important; border: none !important; box-shadow: none !important; padding: 0 !important; width: 100% !important;');
+        $('.navbar-nav .dropdown-item').attr('style', 'padding: 12px 20px 12px 40px !important; font-size: 14px !important; color: #555 !important; border-bottom: 1px solid #f5f5f5 !important; white-space: normal !important;');
+    }
+});

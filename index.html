@@ -31,38 +31,33 @@
         .navbar { position: relative; }
         
         @media (max-width: 991px) {
-            /* 1. 3-Lines Button (Toggler) ko completely hide karein */
             .navbar-toggler { display: none !important; }
             
-            /* 2. Menu links ko hamesha visible rakhein */
             .collapse.navbar-collapse {
                 display: flex !important;
                 flex-basis: 100%;
                 justify-content: center;
-                margin-top: 10px; /* Logo ke thoda niche */
+                margin-top: 10px; 
             }
             
-            /* 3. Links ko ek sidhi line (horizontal) me set karein */
             .navbar-nav {
                 flex-direction: row !important;
-                flex-wrap: wrap !important; /* Taki agar screen choti ho to text automatically next line me aa jaye, kate nahi */
+                flex-wrap: wrap !important; 
                 justify-content: center;
                 width: 100%;
             }
             
-            /* 4. Mobile screen ke hisaab se text ka size aur gap theek karein */
             .navbar-nav .nav-item {
                 border-bottom: none !important;
             }
             .navbar-nav .nav-link {
                 padding: 8px 10px !important;
-                font-size: 13px !important; /* Text thoda chota rakha hai taaki sab ek line me fit ho saken */
+                font-size: 13px !important; 
                 font-weight: 500;
                 color: #333 !important;
                 white-space: nowrap;
             }
 
-            /* 5. Dropdown menus (About Us, Services) ko box ki tarah open karein */
             .navbar-nav .dropdown-menu {
                 position: absolute !important;
                 top: 100%;
@@ -76,12 +71,15 @@
         }
 
         /* =========================================
-           FIX 2: CAROUSEL IMAGE HEIGHT ON MOBILE
+           FIX 2: CAROUSEL IMAGE HEIGHT ON MOBILE (UPDATED)
            ========================================= */
         @media (max-width: 768px) {
             .carousel-item {
-                height: 45vh !important;
-                min-height: 250px !important;
+                /* Height kam kar di gayi hai taaki image zoom hokar kate nahi aur "About Us" page jaisi wide dikhe */
+                height: 220px !important; 
+                min-height: 220px !important;
+                background-position: center center !important;
+                background-size: cover !important;
             }
         }
 

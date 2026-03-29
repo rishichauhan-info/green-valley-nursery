@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Organization Structure - Green Valley Nursery</title>
+    
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/linearicon.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive-style.css">
+
+    <style>
+        /* Navbar & Banner */
+        .nav-item.dropdown:hover .dropdown-menu { display: block; margin-top: 0; }
+        .dropdown-item:hover { background-color: #6bb120; color: #fff !important; }
+        
+        .inner-banner { 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('ImgHome1.PNG') center/cover; 
+            padding: 120px 0; 
+            text-align: center; 
+            color: #fff; 
+        }
+        .about-content-section { padding: 80px 0; background-color: #f4f7f6; }
+        .title-bold { font-weight: 800; color: #222; margin-bottom: 20px; text-transform: uppercase; }
+        .green-line { width: 80px; height: 3px; background: #6bb120; margin-bottom: 25px; }
+        
+        /* -------------------------------------------
+           UNIQUE ORG-CHART STYLES 
+        --------------------------------------------- */
+        .org-chart-wrapper {
+            text-align: center;
+            padding-top: 30px;
+        }
+        
+        /* The Card Box */
+        .org-node {
+            background: #fff;
+            padding: 30px 20px 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            position: relative;
+            border-bottom: 4px solid #6bb120;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 15px;
+            z-index: 2;
+        }
+        .org-node:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(107, 177, 32, 0.2);
+        }
+        
+        /* The Overlapping Icon */
+        .org-icon {
+            width: 60px;
+            height: 60px;
+            background: #6bb120;
+            color: #fff;
+            border-radius: 50%;
+            font-size: 24px;
+            line-height: 52px;
+            border: 4px solid #f4f7f6;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .org-title { font-weight: 800; color: #333; font-size: 18px; margin-bottom: 5px; }
+        .org-desc { font-size: 14px; color: #777; margin: 0; font-weight: 500;}
+        
+        /* CSS Drawn Connecting Lines */
+        .line-vertical { width: 2px; height: 40px; background: #6bb120; margin: 0 auto; }
+        .line-horizontal { height: 2px; background: #6bb120; margin: 0 auto; width: 75%; }
+        
+        @media (max-width: 768px) {
+            .line-horizontal { display: none; } /* Hide horizontal line on mobile */
+            .mobile-line { display: block !important; width: 2px; height: 30px; background: #6bb120; margin: 0 auto; }
+            .org-node { margin-top: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="top">
+        <div class="most-top-info-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="float-left">
+                            <ul>
+                                <li style="color:#fff"><i class="fa fa-envelope" style="color:#fff; margin-right:5px;"></i>pandaysameer6012@gmail.com</li>
+                                <li style="color:#fff"><i class="fa fa-phone" style="color:#fff; margin-right:5px;"></i>+91 8787391690</li>
+                            </ul>
+                        </div>
+                        <div class="float-right">
+                            <ul class="top-social-icon-list">
+                                <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-light top-navbar">
+            <div class="container">
+                <a class="navbar-brand" href="index.html"><img src="Logo.png" alt="logo" height="50"/></a>
+                <div class="collapse navbar-collapse justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="index.html">HOME</a></li>
+                        <li class="nav-item dropdown active">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">ABOUT US <i class="fa fa-angle-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="about-green-valley.html">About Green Valley</a>
+                                <a class="dropdown-item" href="mission-vision.html">Our Mission & Vision</a>
+                                <a class="dropdown-item active" href="organization-structure.html" style="background-color:#6bb120; color:#fff;">Organization Structure</a>
+                                <a class="dropdown-item" href="business-verticals.html">Our Business Verticals</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">SERVICES <i class="fa fa-angle-down"></i></a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="horticulture.html">Horticulture & Landscaping services</a>
+                                <a class="dropdown-item" href="facilitymanagement.html">Facility Management Services</a>
+                                <a class="dropdown-item" href="housekeeping.html">Housekeeping Services</a>
+                                <a class="dropdown-item" href="security.html">Security Services</a>
+                            </div>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="clients.html">CLIENTS</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">CONTACT US</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="inner-banner">
+        <div class="container">
+            <h2 style="font-size: 45px; font-weight: 800;color: #fff;">Organization Structure</h2>
+            <p style="font-size: 22px;">The Pillars of Our Operational Excellence</p>
+        </div>
+    </section>
+
+    <section class="about-content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h2 class="title-bold">Our Leadership & Team</h2>
+                    <div class="green-line" style="margin: 0 auto 40px auto;"></div>
+                    <p style="font-size: 16px; color: #555; margin-bottom: 20px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                        A streamlined, professional hierarchy designed to ensure quick decision-making, strict quality control, and excellent service delivery.
+                    </p>
+                </div>
+            </div>
+
+            <div class="org-chart-wrapper">
+                
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-sm-8">
+                        <div class="org-node">
+                            <div class="org-icon"><i class="fa fa-user-circle"></i></div>
+                            <h4 class="org-title">Managing Director</h4>
+                            <p class="org-desc">Board of Directors</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line-vertical"></div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-4 col-sm-8">
+                        <div class="org-node">
+                            <div class="org-icon" style="background: #333;"><i class="fa fa-sitemap"></i></div>
+                            <h4 class="org-title">General Manager</h4>
+                            <p class="org-desc">Operations & Strategy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="line-vertical"></div>
+                <div class="line-horizontal d-none d-md-block"></div> 
+                
+                <div class="row d-none d-md-flex">
+                    <div class="col-md-3"><div class="line-vertical" style="height: 25px;"></div></div>
+                    <div class="col-md-3"><div class="line-vertical" style="height: 25px;"></div></div>
+                    <div class="col-md-3"><div class="line-vertical" style="height: 25px;"></div></div>
+                    <div class="col-md-3"><div class="line-vertical" style="height: 25px;"></div></div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="mobile-line d-none"></div>
+                        <div class="org-node">
+                            <div class="org-icon" style="background: #009688;"><i class="fa fa-leaf"></i></div>
+                            <h4 class="org-title">Head of Horticulture</h4>
+                            <p class="org-desc">Landscaping Projects</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="mobile-line d-none"></div>
+                        <div class="org-node">
+                            <div class="org-icon" style="background: #009688;"><i class="fa fa-building"></i></div>
+                            <h4 class="org-title">Facility Manager</h4>
+                            <p class="org-desc">Maintenance & Housekeeping</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="mobile-line d-none"></div>
+                        <div class="org-node">
+                            <div class="org-icon" style="background: #009688;"><i class="fa fa-shield"></i></div>
+                            <h4 class="org-title">Security Head</h4>
+                            <p class="org-desc">Manpower Solutions</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="mobile-line d-none"></div>
+                        <div class="org-node">
+                            <div class="org-icon" style="background: #009688;"><i class="fa fa-briefcase"></i></div>
+                            <h4 class="org-title">HR & Finance</h4>
+                            <p class="org-desc">Administration</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-12 text-center mt-4">
+                    <a href="index.html" class="btn btn-success" style="background: #6bb120; border: none; padding: 12px 30px; font-weight: 600; box-shadow: 0 4px 10px rgba(107, 177, 32, 0.3);">
+                        <i class="fa fa-arrow-left"></i> BACK TO HOME
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="seo-audit-section get-in-touch-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 seo-audit-title">
+                    <h3>Get In Touch!!! Stay update with us using this form below</h3>
+                </div>
+            </div>
+            <form id="getInTouch" class="validation-form">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" class="form-control white-ph" placeholder="Name" name="GetinTouchName">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope"></i></span>
+                            <input type="text" class="form-control white-ph" placeholder="Enter your e-mail" name="GetinTouchEmail">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="Submit" class="form-control btn white-btn-lg" value="GET IN TOUCH" >
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h5 style="color:#fff">About Us</h5>
+                    <p>Green Valley Nursery provides horticulture, housekeeping, manpower, security, and facility services, delivering reliable, efficient solutions with trained staff since 2024.</p>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li><h5>Quick Link</h5></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-green-valley.html">About Us</a></li>
+                        <li><a href="radio-network-planing.html">Services</a></li>
+                        <li><a href="contact.html">Enquiry</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li><h5>Services</h5></li>
+                        <li><a href="horticulture.html">Horticulture & Landscaping Services</a></li>
+                        <li><a href="facilitymanagement.html">Facility Management Services</a></li>
+                        <li><a href="">Manpower Supply Services</a></li>
+                        <li><a href="housekeeping.html">Housekeeping Services</a></li>
+                        <li><a href="security.html">Security Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul><li><h5>Address</h5></li></ul>
+                    <p><i class="fa fa-map-marker" style="margin-right:5px;"></i> Khasra No. 149, Bandh Road Sec. 128, Shahpur Goverdhanpur bangar, Gautambudh Nagar, Noida, U.P-04</p>
+                    <p><i class="fa fa-phone" style="margin-right:5px;"></i> +91 8787391690</p>
+                    <p><i class="fa fa-envelope" style="margin-right:5px;"></i> pandaysameer6012@gmail.com</p>
+                </div>
+                <div class="col-md-12">
+                    <ul class="footer-social-icon-list">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
+                    <p class="copy-info">Green Valley Nursery &copy; 2026. All Rights Reserved</p>
+                </div>
+            </div>
+        </div>
+        <a class="top-btn page-scroll" href="#top"><i class="fa fa-chevron-up"></i></a>
+    </footer>
+
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function() {
+        
+        // 1. Purane Submit ko completely block karna
+        $('#getInTouch').on('submit', function(e) {
+            e.preventDefault();
+        });
+
+        // 2. SENDER: Button click par data uthana aur bhejna
+        $('#getInTouch input[type="Submit"]').on('click', function(e) {
+            e.preventDefault(); // Pop-up rokna
+            
+            var nameBox = $('input[name="GetinTouchName"]').val();
+            var emailBox = $('input[name="GetinTouchEmail"]').val();
+            
+            if(nameBox || emailBox) {
+                // URL ke through data bhej rahe hain
+                window.location.href = 'contact.html?passName=' + encodeURIComponent(nameBox) + '&passEmail=' + encodeURIComponent(emailBox);
+            }
+            return false; 
+        });
+
+        // 3. RECEIVER: Contact page par URL se data nikal kar form me bharna
+        function getParam(paramName) {
+            var urlSearch = window.location.search.substring(1);
+            var urlVariables = urlSearch.split('&');
+            for (var i = 0; i < urlVariables.length; i++) {
+                var paramArr = urlVariables[i].split('=');
+                if (paramArr[0] === paramName) {
+                    return decodeURIComponent(paramArr[1].replace(/\+/g, '%20')); // Data ko clean karna
+                }
+            }
+            return null;
+        }
+
+        var urlName = getParam('passName');
+        var urlEmail = getParam('passEmail');
+
+        // Agar URL me Name aur Email mila, toh bade form me daal do
+        if (urlName) {
+            $('input[name="Full_Name"]').val(urlName);
+        }
+        if (urlEmail) {
+            $('input[name="Email_Address"]').val(urlEmail);
+        }
+        
+    });
+    </script>

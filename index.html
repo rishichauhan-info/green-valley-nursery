@@ -17,6 +17,72 @@
     <link rel="stylesheet" href="css/responsive-style.css">
     
     <script src="js/modernizr.min.js"></script>
+
+    <style>
+        #wrap { margin: 0px auto; padding: 15px; width: 100%; background: #FFFFFF; border: 1px solid #0099FF; }
+        h1, h2 { font-weight: normal; border-bottom: 1px solid #E0E0E0; }
+        .grey { color: #999999; }
+        
+        /* Input placeholder color fix */
+        .form-control::placeholder { color: #ffffff !important; opacity: 1; }
+
+        /* =========================================
+           FIX 1: MOBILE MENU & NAVBAR STYLING 
+           ========================================= */
+        .navbar { position: relative; }
+        
+        @media (max-width: 991px) {
+            /* Hamburger Button ko visible banana */
+            .navbar-toggler {
+                background-color: #6bb120 !important; /* Green color taaki dikhe */
+                border: 2px solid #fff;
+                padding: 8px 12px;
+                border-radius: 5px;
+            }
+            .navbar-toggler-icon {
+                filter: brightness(0) invert(1); /* Icon ko white karna */
+            }
+            /* Dropdown Menu ko theek se dikhana */
+            #navbarSupportedContent {
+                background-color: #ffffff;
+                padding: 15px;
+                border-radius: 5px;
+                box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                z-index: 9999;
+            }
+            .navbar-nav .nav-item {
+                border-bottom: 1px solid #f1f1f1;
+            }
+            .navbar-nav .nav-link {
+                color: #333 !important;
+                font-weight: bold;
+                padding: 12px 15px !important;
+            }
+            .navbar-nav .dropdown-menu {
+                border: none;
+                background-color: #f9f9f9;
+                padding-left: 15px;
+            }
+        }
+
+        /* =========================================
+           FIX 2: COUNTER BACKGROUND FALLBACK 
+           ========================================= */
+        .paralaxbg {
+            background-color: #2e3238 !important; /* Dark fallback agar image fail ho jaye */
+            background-size: cover;
+            background-position: center;
+        }
+        .paralaxbg .overlay {
+            background-color: rgba(0, 0, 0, 0.6); /* Text ko readable banane ke liye dark shadow */
+            padding: 60px 0; /* Box ko height dena */
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
     <header id="top">
@@ -168,15 +234,15 @@
         </div>
     </section>
     
-    <section style="padding-top:95px;">
+    <section>
         <div class="paralaxbg" data-paralaxbg-speed="2" style="background-image: url('ImgBackground.Jpg');">
             <div class="overlay">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3 text-center"><div><i class="fa fa-smile-o" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" style="display:block; font-size:36px; color:#fff; font-weight:bold;">179</span><p style="color:#fff;">Customer Satisfaction</p></div></div>
-                        <div class="col-md-3 text-center"><div><i class="fa fa-trophy" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" style="display:block; font-size:36px; color:#fff; font-weight:bold;">141</span><p style="color:#fff;">Achieve Goals</p></div></div>
-                        <div class="col-md-3 text-center"><div><i class="fa fa-share-alt" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" style="display:block; font-size:36px; color:#fff; font-weight:bold;">141</span><p style="color:#fff;">Share People</p></div></div>
-                        <div class="col-md-3 text-center"><div><i class="fa fa-headphones" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" style="display:block; font-size:36px; color:#fff; font-weight:bold;">47</span><p style="color:#fff;">Dedicated Support</p></div></div>
+                        <div class="col-md-3 text-center"><div><i class="fa fa-smile-o" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="179" style="display:block; font-size:36px; color:#fff; font-weight:bold;">179</span><p style="color:#fff;">Customer Satisfaction</p></div></div>
+                        <div class="col-md-3 text-center"><div><i class="fa fa-trophy" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="141" style="display:block; font-size:36px; color:#fff; font-weight:bold;">141</span><p style="color:#fff;">Achieve Goals</p></div></div>
+                        <div class="col-md-3 text-center"><div><i class="fa fa-share-alt" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="141" style="display:block; font-size:36px; color:#fff; font-weight:bold;">141</span><p style="color:#fff;">Share People</p></div></div>
+                        <div class="col-md-3 text-center"><div><i class="fa fa-headphones" style="font-size:40px; color:#fff; margin-bottom:10px;"></i><span class="counter" data-target="47" style="display:block; font-size:36px; color:#fff; font-weight:bold;">47</span><p style="color:#fff;">Dedicated Support</p></div></div>
                     </div>
                 </div>
             </div>
@@ -302,7 +368,6 @@
     <script src="js/jquery-1.12.4.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
     <script src="js/owl.carousel.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script src="js/paralaxbg.min.js"></script>
@@ -311,7 +376,7 @@
     <script src="js/wow.min.js"></script>
 
     <script type="text/javascript">
-    $.fn.counterUp = function() { return this; };
+        $.fn.counterUp = function() { return this; };
     </script>
     
     <script src="js/scripts.js"></script>
@@ -325,53 +390,45 @@
             $('.vticker').easyTicker();
         }
         
-        // 100% WORKING CUSTOM COUNTER FIX
-        var counted = false;
+        // ==========================================
+        // PURE NATIVE JAVASCRIPT COUNTER (BULLETPROOF)
+        // ==========================================
+        const counters = document.querySelectorAll('.counter');
+        const speed = 100; // Speed of counting
 
-        function startCounter() {
-            if ($('.counter').length === 0) return;
-            
-            var oTop = $('.counter').first().offset().top - window.innerHeight;
-            // Jab scroll karein ya already view me ho tabhi run ho
-            if (counted === false && $(window).scrollTop() > oTop) {
-                $('.counter').each(function() {
-                    var $this = $(this);
-                    
-                    // Original number ko temporary save karenge taaki baad me read karne par 0 na ho jaye
-                    var countTo = $this.attr('data-count');
-                    if (!countTo) {
-                        countTo = parseInt($this.text(), 10);
-                        $this.attr('data-count', countTo);
-                    }
-                    
-                    $this.text('0'); 
-                    
-                    $({ countNum: 0 }).animate({
-                        countNum: countTo
-                    }, {
-                        duration: 2500, 
-                        easing: 'swing',
-                        step: function() {
-                            $this.text(Math.floor(this.countNum));
-                        },
-                        complete: function() {
-                            $this.text(this.countNum);
-                        }
-                    });
-                });
-                counted = true;
-            }
-        }
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const updateCount = () => {
+                const current = +counter.innerText;
+                const increment = target / speed;
 
-        // Window scroll pe check karega
-        $(window).scroll(function() {
-            startCounter();
+                if (current < target) {
+                    counter.innerText = Math.ceil(current + increment);
+                    setTimeout(updateCount, 20); // Delay between frames
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            counter.innerText = '0';
+            updateCount();
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    observer.unobserve(entry.target); // Ek baar chalne ke baad ruk jayega
+                }
+            });
+        }, { threshold: 0.5 }); // Jab aada section dikhega tab chalu hoga
+
+        counters.forEach(counter => {
+            observer.observe(counter);
         });
         
-        // FIX 2: Page load pe hi check karega, incase user pehle se waha scroll karke baitha ho
-        startCounter(); 
-        
-        // Force Start Client Logo Carousel
+        // ==========================================
+        // OWL CAROUSEL FIX
+        // ==========================================
         if ($.fn.owlCarousel) {
             $('.owl-carousel').owlCarousel({
                 loop: true,
@@ -387,49 +444,32 @@
                 }
             });
         }
-    });
-    </script>
-    
-    <style>
-    #wrap { margin: 0px auto; padding: 15px; width: 100%; background: #FFFFFF; border: 1px solid #0099FF; }
-    h1, h2 { font-weight: normal; border-bottom: 1px solid #E0E0E0; }
-    .grey { color: #999999; }
-    
-    /* Input placeholder color fix */
-    .form-control::placeholder { color: #ffffff !important; opacity: 1; }
-    </style>
-</body>
-</html>
-<script type="text/javascript">
-    $(document).ready(function() {
         
-        // 1. Purane Submit ko completely block karna
+        // ==========================================
+        // FORM SUBMIT SCRIPT
+        // ==========================================
         $('#getInTouch').on('submit', function(e) {
             e.preventDefault();
         });
 
-        // 2. SENDER: Button click par data uthana aur bhejna
         $('#getInTouch input[type="Submit"]').on('click', function(e) {
-            e.preventDefault(); // Pop-up rokna
-            
+            e.preventDefault();
             var nameBox = $('input[name="GetinTouchName"]').val();
             var emailBox = $('input[name="GetinTouchEmail"]').val();
             
             if(nameBox || emailBox) {
-                // URL ke through data bhej rahe hain
                 window.location.href = 'contact.html?passName=' + encodeURIComponent(nameBox) + '&passEmail=' + encodeURIComponent(emailBox);
             }
             return false; 
         });
 
-        // 3. RECEIVER: Contact page par URL se data nikal kar form me bharna
         function getParam(paramName) {
             var urlSearch = window.location.search.substring(1);
             var urlVariables = urlSearch.split('&');
             for (var i = 0; i < urlVariables.length; i++) {
                 var paramArr = urlVariables[i].split('=');
                 if (paramArr[0] === paramName) {
-                    return decodeURIComponent(paramArr[1].replace(/\+/g, '%20')); // Data ko clean karna
+                    return decodeURIComponent(paramArr[1].replace(/\+/g, '%20'));
                 }
             }
             return null;
@@ -438,13 +478,9 @@
         var urlName = getParam('passName');
         var urlEmail = getParam('passEmail');
 
-        // Agar URL me Name aur Email mila, toh bade form me daal do
-        if (urlName) {
-            $('input[name="Full_Name"]').val(urlName);
-        }
-        if (urlEmail) {
-            $('input[name="Email_Address"]').val(urlEmail);
-        }
-        
+        if (urlName) $('input[name="Full_Name"]').val(urlName);
+        if (urlEmail) $('input[name="Email_Address"]').val(urlEmail);
     });
-</script>
+    </script>
+</body>
+</html>

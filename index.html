@@ -309,13 +309,15 @@
     <script src="js/jquery.mixitup.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/wow.min.js"></script>
+
+    <script type="text/javascript">
+    $.fn.counterUp = function() { return this; };
+    </script>
+    
     <script src="js/scripts.js"></script>
     <script type="text/javascript" src="js/jquery.easy-ticker.js"></script>
     
     <script type="text/javascript">
-    // Dummy function taaki purani scripts.js error na de
-    $.fn.counterUp = function() { return this; };
-
     $(document).ready(function(){
         $('#demo').hide();
         
@@ -323,25 +325,31 @@
             $('.vticker').easyTicker();
         }
         
-        // 100% WORKING CUSTOM COUNTER (Bina kisi external plugin ke)
+        // 100% WORKING CUSTOM COUNTER FIX
         var counted = false;
-        $(window).scroll(function() {
+
+        function startCounter() {
             if ($('.counter').length === 0) return;
             
-            // Jaise hi user scroll karke numbers par pahuchega, ginti shuru hogi
             var oTop = $('.counter').first().offset().top - window.innerHeight;
+            // Jab scroll karein ya already view me ho tabhi run ho
             if (counted === false && $(window).scrollTop() > oTop) {
                 $('.counter').each(function() {
-                    var $this = $(this),
-                        countTo = parseInt($this.text(), 10); // Target number (jaise 179)
+                    var $this = $(this);
                     
-                    $this.text('0'); // Pehle 0 par set karega
+                    // Original number ko temporary save karenge taaki baad me read karne par 0 na ho jaye
+                    var countTo = $this.attr('data-count');
+                    if (!countTo) {
+                        countTo = parseInt($this.text(), 10);
+                        $this.attr('data-count', countTo);
+                    }
                     
-                    // 0 se Target tak smoothly animation start hoga
+                    $this.text('0'); 
+                    
                     $({ countNum: 0 }).animate({
                         countNum: countTo
                     }, {
-                        duration: 2500, // Speed (2.5 seconds)
+                        duration: 2500, 
                         easing: 'swing',
                         step: function() {
                             $this.text(Math.floor(this.countNum));
@@ -353,7 +361,15 @@
                 });
                 counted = true;
             }
+        }
+
+        // Window scroll pe check karega
+        $(window).scroll(function() {
+            startCounter();
         });
+        
+        // FIX 2: Page load pe hi check karega, incase user pehle se waha scroll karke baitha ho
+        startCounter(); 
         
         // Force Start Client Logo Carousel
         if ($.fn.owlCarousel) {
@@ -431,4 +447,4 @@
         }
         
     });
-    </script>
+</script>

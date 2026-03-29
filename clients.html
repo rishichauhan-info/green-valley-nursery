@@ -57,7 +57,7 @@
         
         .trust-section { background: #f4f7f6; padding: 60px 0; border-top: 1px solid #eaeaea; }
 
-        /* MOBILE MENU COMMON FIX */
+        /* COMMON MOBILE MENU FIX */
         @media (max-width: 991px) {
             .navbar-toggler {
                 display: block !important;
@@ -66,6 +66,7 @@
                 padding: 2px 10px !important;
                 border-radius: 5px !important;
                 margin: 10px 0;
+                outline: none !important;
             }
             .navbar-toggler::before {
                 content: "\2630" !important;
@@ -73,7 +74,7 @@
                 font-size: 24px !important;
                 font-weight: bold !important;
             }
-            .navbar-toggler-icon, .navbar-toggler i { display: none !important; }
+            .navbar-toggler-icon, .navbar-toggler i, .navbar-toggler span { display: none !important; }
 
             #navbarSupportedContent {
                 background-color: #ffffff !important;
@@ -213,7 +214,41 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-12 text-center">
+                <div class="col-md-3">
+                    <h5 style="color:#fff">About Us</h5>
+                    <p>Green Valley Nursery provides horticulture, housekeeping, manpower, security, and facility services, delivering reliable, efficient solutions with trained staff since 2024.</p>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li><h5>Quick Link</h5></li>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about-green-valley.html">About Us</a></li>
+                        <li><a href="radio-network-planing.html">Services</a></li>
+                        <li><a href="contact.html">Enquiry</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li><h5>Services</h5></li>
+                        <li><a href="horticulture.html">Horticulture & Landscaping Services</a></li>
+                        <li><a href="facilitymanagement.html">Facility Management Services</a></li>
+                        <li><a href="passive-operation-maintenance.html">Manpower Supply Services</a></li>
+                        <li><a href="housekeeping.html">Housekeeping Services</a></li>
+                        <li><a href="security.html">Security Services</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul><li><h5>Address</h5></li></ul>
+                    <p><i class="fa fa-map-marker" style="margin-right:5px;"></i> Khasra No. 149, Bandh Road Sec. 128, Shahpur Goverdhanpur bangar, Gautambudh Nagar, Noida, U.P-04</p>
+                    <p><i class="fa fa-phone" style="margin-right:5px;"></i> +91 8787391690</p>
+                    <p><i class="fa fa-envelope" style="margin-right:5px;"></i> pandaysameer6012@gmail.com</p>
+                </div>
+                <div class="col-md-12">
+                    <ul class="footer-social-icon-list">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                    </ul>
                     <p class="copy-info">Green Valley Nursery &copy; 2026. All Rights Reserved</p>
                 </div>
             </div>
@@ -226,7 +261,7 @@
 
     <script type="text/javascript">
     $(document).ready(function() {
-        // MOBILE MENU TOGGLE FORCE FIX
+        // MOBILE MENU TOGGLE FIX
         $('.navbar-toggler').on('click', function() {
             $('#navbarSupportedContent').toggleClass('show');
         });
